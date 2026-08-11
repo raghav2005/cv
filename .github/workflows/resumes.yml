@@ -1,0 +1,61 @@
+name: Build role-specific resumes
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.tex"
+      - "scripts/**"
+      - "Makefile"
+      - ".github/workflows/resumes.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: resumes-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX and PDF tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
+
+      - name: Build and validate resumes
+        run: make all
+
+      - name: Upload generated resumes
+        uses: actions/upload-artifact@v4
+        with:
+          name: role-specific-resumes
+          path: |
+            backend-systems/Resume.pdf
+            backend-systems/gmail/Resume.pdf
+            backend-systems/me-com/Resume.pdf
+            security-software/Resume.pdf
+            security-software/gmail/Resume.pdf
+            security-software/me-com/Resume.pdf
+            applied-ai-ml/Resume.pdf
+            applied-ai-ml/gmail/Resume.pdf
+            applied-ai-ml/me-com/Resume.pdf
+
+      - name: Commit refreshed PDFs
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Resume.pdf Resume-latest.pdf backend-systems/Resume.pdf backend-systems/gmail/Resume.pdf backend-systems/me-com/Resume.pdf security-software/Resume.pdf security-software/gmail/Resume.pdf security-software/me-com/Resume.pdf applied-ai-ml/Resume.pdf applied-ai-ml/gmail/Resume.pdf applied-ai-ml/me-com/Resume.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "build: refresh generated resumes [skip ci]"
+            git push
+          fi
