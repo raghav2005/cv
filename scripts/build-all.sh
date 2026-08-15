@@ -137,7 +137,18 @@ if [[ -f "$google_application_directory/content.tex" && \
     "$google_application_directory/Resume.pdf"
   build_google_cover_letter
 else
-  echo "Skipping local-only application documents (not present)."
+  echo "Skipping local Google application documents (not present)."
+fi
+
+apple_application_directory="$repo_root/applications/apple-ist-early-career"
+if [[ -f "$apple_application_directory/content.tex" ]]; then
+  echo "Building local Apple IS&T Early Career application"
+  build_variant "applications/apple-ist-early-career" "gmail"
+  install -m 0644 \
+    "$apple_application_directory/gmail/Resume.pdf" \
+    "$apple_application_directory/Resume.pdf"
+else
+  echo "Skipping local Apple application resume (not present)."
 fi
 
 # Preserve the repository's historical root paths as aliases to the default

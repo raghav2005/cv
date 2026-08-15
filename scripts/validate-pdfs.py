@@ -36,6 +36,11 @@ TRACK_MARKERS = {
         "AI coding tools",
         "Assembly Code Visualiser",
     ),
+    "applications/apple-ist-early-career": (
+        "Data structures and algorithms",
+        "140M+ rows",
+        "Prometheus",
+    ),
 }
 
 
@@ -210,11 +215,11 @@ def main() -> int:
 
     google_track = "applications/google-early-career-swe"
     google_directory = REPO_ROOT / google_track
-    validated_local_application = False
+    validated_google_application = False
     if (google_directory / "content.tex").is_file() and (
         google_directory / "Cover-Letter.tex"
     ).is_file():
-        validated_local_application = True
+        validated_google_application = True
         google_gmail = google_directory / "gmail" / "Resume.pdf"
         google_errors, _ = validate_pdf(
             google_gmail, EMAILS["gmail"], google_track
@@ -230,6 +235,24 @@ def main() -> int:
 
         errors.extend(validate_cover_letter(google_directory / "Cover-Letter.pdf"))
 
+    apple_track = "applications/apple-ist-early-career"
+    apple_directory = REPO_ROOT / apple_track
+    validated_apple_application = False
+    if (apple_directory / "content.tex").is_file():
+        validated_apple_application = True
+        apple_gmail = apple_directory / "gmail" / "Resume.pdf"
+        apple_errors, _ = validate_pdf(
+            apple_gmail, EMAILS["gmail"], apple_track
+        )
+        errors.extend(apple_errors)
+        apple_canonical = apple_directory / "Resume.pdf"
+        if not apple_canonical.is_file() or not filecmp.cmp(
+            apple_canonical, apple_gmail, shallow=False
+        ):
+            errors.append(
+                f"{apple_track}: canonical Resume.pdf is not identical to gmail/Resume.pdf"
+            )
+
     if errors:
         print("Resume validation failed:", file=sys.stderr)
         for error in errors:
@@ -237,8 +260,10 @@ def main() -> int:
         return 1
 
     summary = "Validated 6 role variants, 3 canonical role resumes and 2 root aliases"
-    if validated_local_application:
+    if validated_google_application:
         summary += ", plus the local Google application resume and cover letter"
+    if validated_apple_application:
+        summary += ", plus the local Apple application resume"
     print(f"{summary}.")
     return 0
 
