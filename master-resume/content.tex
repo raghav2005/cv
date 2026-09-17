@@ -1,0 +1,79 @@
+\section{Experience}
+
+\resumeExperience{AI/ML Engineering Intern}{Jul 2026 - Present}{VotalAI}{San Francisco, CA, USA}
+\begin{resumeBullets}
+  \item Shipped Votal, NVIDIA Nemotron and dual-model guard routing across a 24-file feature branch by extending vLLM serving and synchronous/asynchronous fan-out with concurrent verdict aggregation.
+  \item Preserved backward compatibility across 1,066 offline tests by adding 47 routing and launcher tests plus two live contract cases covering payload construction, response parsing and failure handling.
+  \item Hardened the AI gateway against five weakness classes by fixing hCaptcha verification, backend URL handling, subprocess model paths, tenant regexes and LLM tool-call validation for CWE-288, CWE-918, CWE-78, ReDoS and prompt injection.
+  \item Used AI coding tools to accelerate design, implementation, regression-test generation and documentation while manually validating NVIDIA NIM/vLLM contracts and reviewing generated changes before commit.
+\end{resumeBullets}
+
+\resumeExperience{Cybersecurity Analyst}{Jun 2025 - Aug 2025}{Barclays}{Knutsford, UK}
+\begin{resumeBullets}
+  \item Projected a 20-30\% shorter PQC transition across 30+ services by producing a 60-page PQC/HSM security assessment, capability and gap matrix, and five-phase implementation roadmap.
+  \item Cut certificate triage time 25\% and flagged 30+ high-risk certificates by building Python services for CA-chain enrichment, root-cause classification, ServiceNow normalisation, risk scoring and OpenSSL path-frequency analysis over million-row extracts.
+  \item Developed 15+ KQL/SPL threat-hunting queries against live Microsoft Defender, Sentinel and Splunk logs, promoting 7+ detections to production and increasing high-signal alerts approximately 20\% in pilot; expanded a signal with 100+ threat terms.
+  \item Personally triaged and investigated 210+ incidents by correlating live security telemetry to distinguish actionable threats from benign activity.
+  \item Completed Copilot prompt-injection testing and presented a GenAI threat assessment to Cyber Operations covering prompt injection, data exfiltration, model poisoning, insecure code generation and mitigations.
+\end{resumeBullets}
+
+\resumeExperience{Full-Stack Developer}{Aug 2024 - Oct 2024}{Adamas Data}{London, UK}
+\begin{resumeBullets}
+  \item Kept median query latency below 3 seconds across 140M+ rows and 150+ filter combinations by indexing PostgreSQL and PostGIS queries behind 30+ versioned FastAPI endpoints.
+  \item Enabled rollback in under 10 minutes by containerising and automating CI/CD for a production FastAPI, PostgreSQL and Next.js application delivered through the complete SDLC.
+\end{resumeBullets}
+
+\newpage
+\section{Experience (continued)}
+
+\resumeExperience{AI/ML and Quantum Security Intern}{Jun 2024 - Aug 2024}{Tech Mahindra}{Pune, India}
+\begin{resumeBullets}
+  \item Raised domain F1 15\%, cut mean GPU latency 20\% and reduced peak VRAM 60\% by leading five engineers to 4-bit LoRA/PEFT fine-tune a 7B model on 120k curated records and benchmark 6k questions.
+  \item Improved retrieval MRR 25\% and cut hallucination rate to 7\% by converting 295 multilingual PDFs (4k pages) into 12k chunks and 24k QA pairs with Selenium, PyMuPDF/Tesseract, translation, BM25 and MiniLM; limited manual correction to 10\%.
+  \item Demonstrated 20 authenticated Flask/Gradio endpoints to stakeholders, achieving 13\% English WER, 20\% Indonesian WER, 11\% Thai CER and approximately 2-second short-request latency across Thai LLM, Whisper/Wav2Vec2 ASR and VITS TTS workflows; kept checkpoint A/B tests under five minutes.
+  \item Completed 100 hybrid TLS 1.3 handshakes at approximately 20 ms overhead by implementing ML-KEM/Kyber512 NTT arithmetic, key generation, encapsulation and decapsulation in Python; validated 800-byte public keys, 768-byte ciphertexts and 32-byte shared secrets while comparing NIST PQC finalists.
+  \item Executed 100-qubit transverse-field Ising circuits on IBM Brisbane with up to 10 Trotter configurations, 12 parameter values and approximately 4,096 shots per circuit by using Qiskit Runtime, SamplerV2/EstimatorV2 and XY4 dynamical decoupling.
+  \item Coordinated four teammates across three to four workstreams, reviewed approximately 12 changes, ran six to eight progress reviews and presented the completed work to approximately 10 stakeholders.
+\end{resumeBullets}
+
+\section{Projects}
+
+\resumeProject{\href{https://github.com/raghav2005/Walrus-Cache-CDN-FYP}{Walrus-Cache-CDN (UCL Dissertation)}}{Rust, RocksDB, Tokio, Sui, Prometheus}{Jun 2025 - Present}
+\begin{resumeBullets}
+  \item Increased retrieval throughput 4.2x and cut average latency from 85.0 ms to 20.5 ms on a reproducible 100k-request benchmark by building a lifecycle-aware two-tier Rust cache for Walrus decentralised storage.
+  \item Achieved an 81.7\% hit rate by combining W-TinyLFU/LRU admission, persistent RocksDB storage, asynchronous event ingestion and deterministic invalidation by blob ID, tag and epoch with Prometheus observability.
+\end{resumeBullets}
+
+\resumeProject{Quantum Proximity Gateway (IBM and UCL)}{Python, Rust, C++, Next.js}{Oct 2024 - May 2025}
+\begin{resumeBullets}
+  \item Automated hot-desk PC authentication by integrating ESP32 BLE proximity, Raspberry Pi facial recognition and Pico USB-HID emulation into a distributed multi-factor edge-to-cloud system.
+\end{resumeBullets}
+
+\resumeProject{Playo - Audiobook Generator}{Python, Firebase, OpenAI, ElevenLabs, TypeScript}{Jan 2024}
+\begin{resumeBullets}
+  \item Delivered end-to-end personalised audiobook generation by combining user preferences with OpenAI story generation, ElevenLabs speech and a TypeScript/Firebase mobile application.
+\end{resumeBullets}
+
+\resumeProject{Assembly Code Visualiser}{Node.js, Express.js, SQL, Redis}{Jun 2022 - Mar 2023}
+\begin{resumeBullets}
+  \item Made computer architecture easier to learn by building a web assembly IDE and interactive Little Man Computer simulator exposing CPU/RAM state and educator-authored challenges.
+\end{resumeBullets}
+
+\resumeProject{Post-Quantum Cryptography Research}{Pioneer Academics, C, Linux}{Feb 2022 - Jul 2022}
+\begin{resumeBullets}
+  \item Produced a supervised research paper comparing code-, lattice- and multivariate-based NIST Round 3 PQC finalists through mathematical analysis and empirical C benchmarks.
+\end{resumeBullets}
+
+\section{Technical Skills}
+\resumeSkill{Languages}{Python, Rust, C/C++, Java, Go, JavaScript/TypeScript, SQL, Bash, KQL, SPL, HTML/CSS}
+\resumeSkill{AI/ML}{PyTorch, TensorFlow, Hugging Face, vLLM, LoRA/PEFT, LLMs, RAG, BM25, MiniLM, Whisper, Wav2Vec2, VITS, prompt engineering, model evaluation}
+\resumeSkill{Backend/Web}{FastAPI, Flask, Node.js, React/Next.js, REST APIs, microservices, Gradio, JWT}
+\resumeSkill{Data/Storage}{RocksDB, PostgreSQL, PostGIS, Redis, SQLite, SQLAlchemy, Pandas, NumPy, Firebase}
+\resumeSkill{Security}{Threat hunting, detection engineering, MITRE ATT\&CK, Defender, Sentinel, Splunk, PKI, HSMs, certificates, PQC, ML-KEM, TLS 1.3, threat modelling, application/API security}
+\resumeSkill{Infrastructure}{Tokio, Docker, Linux/Unix, GCP, CI/CD, Prometheus, Git, ServiceNow, Selenium, JUnit, Qiskit, automated testing, AI-assisted development}
+
+\section{Open Source and Leadership}
+\begin{resumeBullets}
+  \item Delivered merged contributions to Microsoft Terminal, mactop and Docusaurus, including a keyboard-driven Go help view and documentation-navigation improvements; worked as a technical writer.
+  \item Served as a UCL programming tutor and cricket vice-captain; previously led the Dubai Computing Community and captained or coached cricket and volleyball teams.
+\end{resumeBullets}
